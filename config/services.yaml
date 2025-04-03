@@ -1,9 +1,9 @@
 services:
   NerdySouth\StripeBundle\Service\PaymentService:
     arguments:
-      $stripeSecretKey: '%env(STRIPE_SECRET_KEY)%'
-
+      $stripeSecretKey: '%nerdysouth_stripe.api_key%'
   NerdySouth\StripeBundle\Controller\StripeWebhookController:
     public: true
     arguments:
-      $stripeWebhookSecret: '%env(STRIPE_WEBHOOK_SECRET)%'
+      $stripeWebhookSecret: '%nerdysouth_stripe.webhook_secret%'
+      $entityManager: Doctrine\ORM\EntityManagerInterface
