@@ -18,7 +18,40 @@ For now, this bundle allows you to:
 
 ## Installation
 
+Install the stripe-bundle package with composer:
+
 `composer require nerdysouth/stripe-bundle`
+
+Add the following lines to your `config/routes.yaml` file (modify the path if you prefer a different path):
+
+```
+nerdysouth_stripe_webhook:
+  path: /webhook/stripe
+  controller: NerdySouth\StripeBundle\Controller\StripeWebhookController::handleWebhook
+  methods: [POST]
+```
+
+Add the following lines to your `config/packages/doctrine.yaml` file:
+
+```
+doctrine:
+    orm:
+        mappings:
+            NerdySouthStripeBundle:
+                is_bundle: true
+                type: attribute
+                dir: Entity
+                prefix: NerdySouth\StripeBundle\Entity
+                alias: NerdySouthStripeBundle
+```
+
+Run a composer update to ensure the additional able is added:
+
+`php bin/console doctrine:schema:update -f`
+
+## Event Handling
+
+This bundle dispatches a `NerdySouth\StripeBundle\Event\StripeEvent` when a webhook is received, with a name that is equal to what Stripe uses as an event "type". For example, values like `checkout.session.completed` or `payment_intent.succeeded` - the event has methods like `getEventType()` and `getEventData()` to get the event type and the JSON data received in the webhook.
 
 ## Support & Contributing
 
