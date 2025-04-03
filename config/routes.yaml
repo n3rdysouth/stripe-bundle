@@ -1,0 +1,4 @@
+nerdysouth_stripe_webhook:
+  path: /webhook/stripe
+  controller: NerdySouth\StripeBundle\Controller\StripeWebhookController::handle
+  methods: [POST]
