@@ -33,7 +33,7 @@ class PaymentService
 
         // Create a transaction in the database and save it
         $transaction = new Transaction();
-        $transaction->setAmount($amount);
+        $transaction->setAmount($amountInCents);
         $transaction->setCurrency($currency);
         $transaction->setIsSubscription($isRecurring);
         $transaction->setStatus('pending');
