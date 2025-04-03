@@ -49,6 +49,10 @@ Run a composer update to ensure the additional able is added:
 
 `php bin/console doctrine:schema:update -f`
 
+## Event Handling
+
+This bundle dispatches a `NerdySouth\StripeBundle\Event\StripeEvent` when a webhook is received, with a name that is equal to what Stripe uses as an event "type". For example, values like `checkout.session.completed` or `payment_intent.succeeded` - the event has methods like `getEventType()` and `getEventData()` to get the event type and the JSON data received in the webhook.
+
 ## Support & Contributing
 
 - Please open any issues regarding new features you think would help, or bugs you find in using this application.
