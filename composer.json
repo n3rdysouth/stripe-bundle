@@ -1,0 +1,37 @@
+
+{
+  "name": "nerdysouth/stripe-bundle",
+  "description": "Stripe Bundle for Symfony 7.x",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "keywords": [
+    "php",
+    "bundle",
+    "symfony",
+    "stripe",
+    "webhook"
+  ],
+  "autoload": {
+    "psr-4": {
+      "NerdySouth\\StripeBundle\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Brandon DuBois",
+      "email": "support@nerdysouthinc.com"
+    }
+  ],
+  "require": {
+    "php": "^8.0",
+    "ext-curl": "*",
+    "symfony/framework-bundle": "^7.0",
+    "symfony/http-client": "^7.0",
+    "stripe/stripe-php": ">=7"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true
+    }
+  }
+}
