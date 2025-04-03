@@ -17,8 +17,8 @@ class NerdySouthStripeExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         // Set parameters for use in services
-        $container->setParameter('nerdysouth_stripe.webhook_secret', $config['webhook_secret'] ?? null);
-        $container->setParameter('nerdysouth_stripe.api_key', $config['api_key'] ?? null);
+        $container->setParameter('nerdysouth_stripe.api_key', '%env(STRIPE_SECRET_KEY)%');
+        $container->setParameter('nerdysouth_stripe.webhook_secret', '%env(STRIPE_WEBHOOK_SECRET)%');
 
         // Load service definitions
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
