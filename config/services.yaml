@@ -1,12 +1,9 @@
-parameters:
-  nerdysouth_stripe.api_key: '%env(STRIPE_SECRET_KEY)%'
-  nerdysouth_stripe.webhook_secret: '%env(STRIPE_WEBHOOK_SECRET)%'
-
 services:
   NerdySouth\StripeBundle\Service\PaymentService:
     arguments:
-      $stripeSecretKey: '%nerdysouth_stripe.api_key%'
+      $stripeSecretKey: '%env(STRIPE_SECRET_KEY)%'
+
   NerdySouth\StripeBundle\Controller\StripeWebhookController:
     public: true
     arguments:
-      $stripeWebhookSecret: '%nerdysouth_stripe.webhook_secret%'
+      $stripeWebhookSecret: '%env(STRIPE_WEBHOOK_SECRET)%'
