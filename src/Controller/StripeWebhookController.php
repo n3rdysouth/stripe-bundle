@@ -10,6 +10,7 @@ use NerdySouth\StripeBundle\Event\StripeEvent;
 use NerdySouth\StripeBundle\Entity\Transaction;
 use Stripe\Webhook;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class StripeWebhookController
@@ -24,6 +25,7 @@ class StripeWebhookController
         $this->stripeWebhookSecret = $stripeWebhookSecret;
     }
 
+    #[Route('/webhook/stripe', name: 'nerdysouth_stripe_webhook')]
     public function handle(Request $request): JsonResponse
     {
         $payload = $request->getContent();
