@@ -2,54 +2,37 @@
 
 namespace NerdySouth\StripeBundle\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity()
- * @ORM\Table(name="stripe_transaction")
- */
+#[ORM\Entity]
+#[ORM\Table(name: 'stripe_transaction')]
 class Transaction
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: Types::INTEGER)]
     private int $id;
 
-    /**
-     * @ORM\Column(type="string", length=255, unique=true, nullable=false)
-     */
+    #[ORM\Column(type: Types::STRING, length: 255, unique: true, nullable: false)]
     private string $stripeSessionId;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     private ?string $subscriptionId = null; // For recurring transactions
 
-    /**
-     * @ORM\Column(type="boolean", nullable=false, options={"default": false})
-     */
+    #[ORM\Column(type: Types::BOOLEAN, nullable: false, options: ['default' => false])]
     private bool $isSubscription = false;
 
-    /**
-     * @ORM\Column(type="integer", nullable=false)
-     */
+    #[ORM\Column(type: Types::INTEGER, nullable: false)]
     private int $amount; // Amount in the smallest unit (cents)
 
-    /**
-     * @ORM\Column(type="string", length=3, nullable=false)
-     */
+    #[ORM\Column(type: Types::STRING, length: 3, nullable: false)]
     private string $currency;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=false)
-     */
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: false)]
     private \DateTimeInterface $createdAt;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=false)
-     */
+    #[ORM\Column(type: Types::STRING, length: 50, nullable: false)]
     private string $status; // E.g., "pending", "paid", "active", "canceled"
 
     public function __construct()
