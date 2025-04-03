@@ -27,6 +27,7 @@
     "ext-curl": "*",
     "symfony/framework-bundle": "7.2.*",
     "symfony/event-dispatcher": "7.2.*",
+    "symfony/twig-bundle": "^7.2",
     "doctrine/orm": "^3.3",
     "stripe/stripe-php": "^16.6"
   },
