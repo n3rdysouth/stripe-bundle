@@ -6,17 +6,16 @@ use Stripe\Checkout\Session;
 use Stripe\Stripe;
 use NerdySouth\StripeBundle\Entity\Transaction;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class PaymentService
 {
     private string $stripeSecretKey;
 
     public function __construct(
-        protected ParameterBagInterface $parameterBag,
+        string $stripeSecretKey,
         protected EntityManagerInterface $entityManager
     ) {
-        $this->stripeSecretKey = $this->parameterBag->get('nerdysouth_stripe.api_key');
+        $this->stripeSecretKey = $stripeSecretKey;
         Stripe::setApiKey($this->stripeSecretKey);
     }
 
