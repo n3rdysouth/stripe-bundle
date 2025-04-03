@@ -23,11 +23,11 @@
     }
   ],
   "require": {
-    "php": "^8.0",
+    "php": ">=8.2",
     "ext-curl": "*",
-    "symfony/framework-bundle": "^7.0",
-    "symfony/http-client": "^7.0",
-    "stripe/stripe-php": ">=7"
+    "symfony/framework-bundle": "7.2.*",
+    "symfony/event-dispatcher": "7.2.*",
+    "stripe/stripe-php": "^16.6"
   },
   "config": {
     "allow-plugins": {
