@@ -7,7 +7,6 @@ services:
     arguments:
       $stripeSecretKey: '%nerdysouth_stripe.api_key%'
   NerdySouth\StripeBundle\Controller\StripeWebhookController:
+    public: true
     arguments:
       $stripeWebhookSecret: '%nerdysouth_stripe.webhook_secret%'
-  NerdySouth\StripeBundle\Routing\StripeRouteLoader:
-    tags: [router.loader]

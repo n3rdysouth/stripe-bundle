@@ -16,6 +16,11 @@
       "NerdySouth\\StripeBundle\\": "src/"
     }
   },
+  "extra": {
+    "symfony": {
+      "recipe": true
+    }
+  },
   "authors": [
     {
       "name": "Brandon DuBois",
