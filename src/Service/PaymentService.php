@@ -39,9 +39,6 @@ class PaymentService
         $transaction->setStatus('pending');
         $transaction->setCreatedAt(new \DateTime());
 
-        $this->entityManager->persist($transaction);
-        $this->entityManager->flush();
-
         // Create Stripe payment or subscription session
         $sessionData = [
             'payment_method_types' => ['card'],
@@ -67,6 +64,7 @@ class PaymentService
 
         // Update transaction with the Stripe session ID
         $transaction->setStripeSessionId($session->id);
+        $this->entityManager->persist($transaction);
         $this->entityManager->flush();
 
         return $session->url;
