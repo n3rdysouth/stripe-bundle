@@ -35,7 +35,7 @@ class PaymentService
         $transaction = new Transaction();
         $transaction->setAmount($amount);
         $transaction->setCurrency($currency);
-        $transaction->setIsRecurring($isRecurring);
+        $transaction->setIsSubscription($isRecurring);
         $transaction->setStatus('pending');
         $transaction->setCreatedAt(new \DateTime());
 
