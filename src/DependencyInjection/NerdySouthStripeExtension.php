@@ -20,7 +20,7 @@ class NerdySouthStripeExtension extends Extension
         $container->setParameter('nerdysouth_stripe.webhook_secret', $config['webhook_secret'] ?? null);
 
         // Load service definitions
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
     }
 }
