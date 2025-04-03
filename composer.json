@@ -1,7 +1,7 @@
 
 {
   "name": "nerdysouth/stripe-bundle",
-  "description": "Stripe Bundle for Symfony 7.x",
+  "description": "Stripe Bundle for Symfony 7.2",
   "type": "symfony-bundle",
   "license": "MIT",
   "keywords": [
