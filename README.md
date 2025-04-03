@@ -14,7 +14,7 @@ For now, this bundle allows you to:
 
 ## Next Steps
 
-- Add Stripe sync to custom doctrine models (i.e. Users, custom objects)
+- Add ability to pass custom metadata into transactions and subscriptions
 
 ## Installation
 
@@ -45,13 +45,15 @@ doctrine:
                 alias: NerdySouthStripeBundle
 ```
 
-Run a composer update to ensure the additional able is added:
+Run a doctrine schema update to ensure the additional table is added:
 
 `php bin/console doctrine:schema:update -f`
 
 ## Event Handling
 
 This bundle dispatches a `NerdySouth\StripeBundle\Event\StripeEvent` when a webhook is received, with a name that is equal to what Stripe uses as an event "type". For example, values like `checkout.session.completed` or `payment_intent.succeeded` - the event has methods like `getEventType()` and `getEventData()` to get the event type and the JSON data received in the webhook.
+
+Doing custom code to update your own objects is as simple as creating your own event subscriber which listens for the events you care about.
 
 ## Support & Contributing
 
