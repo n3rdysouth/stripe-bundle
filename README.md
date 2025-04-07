@@ -4,7 +4,7 @@
 
 ## Description
 
-This bundle helps developers do a Stripe integration in a Symfony application for processing payments. The bundle allows you to generate a redirect URL for one-time or recurring subscription payments, using parameters like success URL, failure URL, amount, and optional product product/subscription description. The bundle also adds a route for webhooks and fires a custom event on all webhooks from Stripe, as well as stores Transactions and their status using Doctrine, so that logging and tracking successful payments and subscriptions, and other events, is a breeze.
+This bundle helps developers do a Stripe integration in a Symfony application for processing payments. The bundle allows you to generate a redirect URL for one-time or recurring subscription payments, using parameters like success URL, failure URL, amount, and optional product or subscription description. The bundle also adds a route for webhooks and fires a custom event on all webhooks from Stripe, as well as stores Transactions and their status using Doctrine, so that logging and tracking successful payments and subscriptions, and other events, is a breeze.
 
 For now, this bundle allows you to:
 
