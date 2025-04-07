@@ -26,7 +26,8 @@ class PaymentService
         string $cancelUrl,
         bool $isRecurring,
         ?string $productName = null,
-        ?string $productDescription = null
+        ?string $productDescription = null,
+        ?array $metadata = [],
     ): string {
         // Convert amount to cents (required by Stripe)
         $amountInCents = $amount * 100;
@@ -56,6 +57,7 @@ class PaymentService
                 ],
                 'quantity' => 1,
             ]],
+            'metadata' => $metadata,
             'mode' => $isRecurring ? 'subscription' : 'payment',
             'success_url' => $successUrl,
             'cancel_url' => $cancelUrl,
