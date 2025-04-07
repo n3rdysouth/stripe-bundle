@@ -49,6 +49,36 @@ Run a doctrine schema update to ensure the additional table is added:
 
 `php bin/console doctrine:schema:update -f`
 
+# Generating Payment Links
+
+Here is an example controller which will redirect the user to your payment page.
+
+```
+<?php
+
+namespace App\Controller;
+
+use NerdySouth\StripeBundle\Service\PaymentService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Attribute\Route;
+
+class TestController extends AbstractController
+{
+    #[Route('/test', name: 'test')]
+    public function test(PaymentService $paymentService)
+    {
+        return $this->redirect($paymentService->createPaymentUrl(
+            29.99,
+            'USD',
+            'https://www.google.com', // url when successfully paid
+            'https://www.google.com', // url on cancel or failure
+            true, // change to false if not a subscription
+            'Test Product or Subscription'
+        ));
+    }
+}
+```
+
 ## Event Handling
 
 This bundle dispatches a `NerdySouth\StripeBundle\Event\StripeEvent` when a webhook is received, with a name that is equal to what Stripe uses as an event "type". For example, values like `checkout.session.completed` or `payment_intent.succeeded` - the event has methods like `getEventType()` and `getEventData()` to get the event type and the JSON data received in the webhook.
