@@ -25,7 +25,8 @@ class PaymentService
         string $successUrl,
         string $cancelUrl,
         bool $isRecurring,
-        ?string $productName = null
+        ?string $productName = null,
+        ?string $productDescription = null
     ): string {
         // Convert amount to cents (required by Stripe)
         $amountInCents = $amount * 100;
@@ -46,6 +47,7 @@ class PaymentService
                     'currency' => $currency,
                     'product_data' => [
                         'name' => $isRecurring ? ($productName ?? 'Subscription Plan') : ($productName ?? 'One-Time Payment'),
+                        'description' => $productDescription
                     ],
                     'unit_amount' => $amountInCents,
                     'recurring' => $isRecurring ? [
