@@ -27,7 +27,7 @@ Add the following lines to your `config/routes.yaml` file (modify the path if yo
 ```
 nerdysouth_stripe_webhook:
   path: /webhook/stripe
-  controller: NerdySouth\StripeBundle\Controller\StripeWebhookController::handleWebhook
+  controller: NerdySouth\StripeBundle\Controller\StripeWebhookController::handle
   methods: [POST]
 ```
 
